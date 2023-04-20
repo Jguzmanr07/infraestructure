@@ -34,7 +34,7 @@ jobs:
           aws_key_id: ${{ secrets.ACCESS_KEY }}
           aws_secret_access_key: ${{ secrets.ACCESS_KEY_SECRET}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: '$(Build.SourcesDirectory)'
+          source_dir: ''
 
 
   deploy:
