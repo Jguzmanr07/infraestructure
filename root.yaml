@@ -3,9 +3,9 @@ Description: >-
  "Template infraestructure Mercabotsi."
 
 Parameters:
-  pBucket:
-    Description: Nombre del bucket con los datos de infraestructura
-    Type: String
+  # pBucket:
+  #   Description: Nombre del bucket con los datos de infraestructura
+  #   Type: String
   pEnvironment:
     Description:  Environment for account
     Type: String
