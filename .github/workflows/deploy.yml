@@ -60,8 +60,8 @@ jobs:
           no-fail-on-empty-changeset: "1"
           capabilities: 'CAPABILITY_AUTO_EXPAND'
           parameter-overrides: >-
-           pBucket=${{ secrets.AWS_BUCKET }}
-           pEnvironment=dev
+           pBucket=${{ secrets.AWS_BUCKET }},
+           pEnvironment='dev'
           tags: >-
             github-devops:pipeline-id=${{ github.workflow }},
             github-devops:creator-email=${{ github.actor }},
