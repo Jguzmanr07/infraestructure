@@ -52,7 +52,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.ACCESS_KEY_SECRET }}
           aws-region: us-east-1
 
-      - name: Deploy to AWS CloudFormation
+      - name: Deploy AWS CloudFormation Dev
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: infraestructure
@@ -61,6 +61,7 @@ jobs:
           capabilities: 'CAPABILITY_AUTO_EXPAND'
           parameter-overrides: >-
            pBucket=${{ secrets.AWS_BUCKET }}
+           pEnvironment=dev
           tags: >-
             github-devops:pipeline-id=${{ github.workflow }},
             github-devops:creator-email=${{ github.actor }},
