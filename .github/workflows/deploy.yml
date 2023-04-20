@@ -26,6 +26,7 @@ on:
 jobs:
 
   upload:
+    name: Uploads Template
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -54,8 +55,8 @@ jobs:
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: ${{ github.event.inputs.cfn-name}}
-          template:  ${{ github.event.inputs.cfn-template}}
+          name: infraestructure
+          template:  root.yaml
           no-fail-on-empty-changeset: "1"
           capabilities: 'CAPABILITY_AUTO_EXPAND'
           parameter: >-
