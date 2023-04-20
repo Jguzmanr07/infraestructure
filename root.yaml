@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >-
+ "Template infraestructure Mercabotsi."
+
+Parameters:
+  pBucket:
+    Description: Nombre del bucket con los datos de infraestructura
+    Type: String
+  pEnvironment:
+    Description:  Environment for account
+    Type: String
+   
+Resources:
+ #----------------------- AWS Resources -----------------------------------------#
+
+  #Bucket de prueba
+  rbucketsstack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: s3\bucket.yaml
+      Parameters:
+         pEnvironment: pEnvironment
