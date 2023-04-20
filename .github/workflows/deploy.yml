@@ -43,7 +43,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.ACCESS_KEY_SECRET}}
           aws-region: 'us-east-1'
           aws-bucket: ${{ secrets.AWS_BUCKET }}
-          file-path: './*'
+          file-path: '.'
 
 
   deploy:
