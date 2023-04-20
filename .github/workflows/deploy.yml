@@ -13,6 +13,14 @@ on:
         description: 'AWS Region'
         required: true
         default: 'us-east-1'
+      cfn-name:
+        description: 'Name of stack'
+        required: true
+        default: ''
+      cfn-template:
+        description: 'template for stack'
+        required: true
+        default: ''
 
 
 jobs:
@@ -32,7 +40,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.ACCESS_KEY_SECRET }}
-          aws-region: ${{ github.event.inputs.region}}
+          aws-region: us-east-1 #${{ github.event.inputs.region}}
 
       # Deploy to AWS CloudFormation
       # - name: Deploy to AWS CloudFormation
@@ -47,15 +55,13 @@ jobs:
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-1'
-          stack-name: ${{ env.cfn-name }}
-          template-file: ${{ env.cfn-template }}
+          name: ${{ github.event.inputs.cfn-name}}
+          template:  ${{ github.event.inputs.cfn-template}}
+          no-fail-on-empty-changeset: "1"
           capabilities: 'CAPABILITY_AUTO_EXPAND'
-          tags: |
-            github-devops:pipeline-id=${{ github.workflow }}
-            github-devops:creator-email=${{ github.actor }}
+          tags: >-
+            github-devops:pipeline-id=${{ github.workflow }},
+            github-devops:creator-email=${{ github.actor }},
             github-devops:repository=${{ github.repository }}
 
 # cloudmind:project-name=${{ env.project-name }}
