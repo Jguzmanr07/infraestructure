@@ -17,6 +17,6 @@ Resources:
   rbucketsstack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/${pBucket}/CstR06nDp/s3/bucket.yaml
+      TemplateURL: !Sub https://s3.amazonaws.com/${pBucket}/CstR06nDp/s3/bucket.yaml
       Parameters:
          pEnvironment: pEnvironment
